@@ -2,7 +2,7 @@ let studentCount = 1;  // Start counting from 1 for user-friendly row IDs
 
 function initializePage() {
     // Display Full Name and NUID
-    document.getElementById('userInfo').innerHTML = "Your Name: John Doe | NUID: 001234567";
+    document.getElementById('userInfo').innerHTML = "Your Name: Vrajesh Nasit | NUID: 002089670";
 }
 
 function handleCheckbox(checkbox, rowId) {

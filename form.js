@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const emailInput = document.getElementById('email');
     const phoneInput = document.getElementById('phone');
     const zipInput = document.getElementById('zip');
+    const street1Input = document.getElementById('street1');
+    const street2Input = document.getElementById('street2');
     const listSelect = document.getElementById('list');
     const dynamicCheckbox = document.getElementById('dynamicCheckbox');
     const dynamicTextField = document.getElementById('dynamicTextField');
@@ -42,6 +44,13 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('zipError').classList.add('hidden');
         }
 
+        if (!street1Input.value.trim()) {
+            document.getElementById('street1Error').classList.remove('hidden');
+            valid = false;
+        } else {
+            document.getElementById('street1Error').classList.add('hidden');
+        }
+
         submitBtn.disabled = !valid;
     }
 
@@ -49,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     emailInput.addEventListener('keyup', validateForm);
     phoneInput.addEventListener('keyup', validateForm);
     zipInput.addEventListener('keyup', validateForm);
+    street1Input.addEventListener('keyup', validateForm);
 
     dynamicCheckbox.addEventListener('change', function () {
         if (this.checked) {
@@ -68,8 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
         row.insertCell(1).textContent = emailInput.value;
         row.insertCell(2).textContent = phoneInput.value;
         row.insertCell(3).textContent = zipInput.value;
-        row.insertCell(4).textContent = listSelect.value;
-        row.insertCell(5).textContent = dynamicCheckbox.checked ? dynamicTextField.value : '';
+        row.insertCell(4).textContent = street1Input.value;
+        row.insertCell(5).textContent = street2Input.value ? street2Input.value : ''; // If Street 2 is empty, show an empty cell
+        row.insertCell(6).textContent = listSelect.value;
+        row.insertCell(7).textContent = dynamicCheckbox.checked ? dynamicTextField.value : '';
 
         table.style.display = 'block';
 

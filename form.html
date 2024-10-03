@@ -34,6 +34,13 @@
     <input type="text" id="zip" pattern="^\d{5}$" required>
     <span class="error hidden" id="zipError">Zip code must be 5 digits</span><br><br>
 
+    <label for="street1">Street Address 1:</label>
+    <input type="text" id="street1" required>
+    <span class="error hidden" id="street1Error">Street Address 1 is required</span><br><br>
+
+    <label for="street2">Street Address 2 (Optional):</label>
+    <input type="text" id="street2"><br><br>
+
     <label for="list">Select your Order:</label>
     <select id="list" required>
         <option value="">Select your Order</option>
@@ -46,7 +53,7 @@
     <br><br>
 
     <input type="checkbox" id="dynamicCheckbox">
-    <label for="dynamicCheckbox">comment</label>
+    <label for="dynamicCheckbox">Comment</label>
     <input type="text" id="dynamicTextField" class="hidden" placeholder="Dynamic Field" required>
     <br><br>
 
@@ -59,6 +66,8 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Zip</th>
+        <th>Street Address 1</th>
+        <th>Street Address 2</th>
         <th>Option Selected</th>
         <th>Dynamic Field</th>
     </tr>

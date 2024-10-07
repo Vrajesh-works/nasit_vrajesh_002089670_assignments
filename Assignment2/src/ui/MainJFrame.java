@@ -48,7 +48,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jSplitPane1.setDividerLocation(85);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        topJPanel.setBackground(new java.awt.Color(204, 255, 204));
+        topJPanel.setBackground(new java.awt.Color(0, 102, 204));
 
         btnPersonProfileManage.setText("Open Person Profile Work Area");
         btnPersonProfileManage.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +76,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(topJPanel);
 
-        personProfileContainer.setBackground(new java.awt.Color(255, 204, 204));
+        personProfileContainer.setBackground(new java.awt.Color(0, 204, 204));
         personProfileContainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(personProfileContainer);
 

@@ -47,7 +47,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         btnDeletePerson = new javax.swing.JButton();
         txtSearchBox = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(255, 204, 204));
+        setBackground(new java.awt.Color(0, 204, 204));
 
         btnBack.setText("<<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

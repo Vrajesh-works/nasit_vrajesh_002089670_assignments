@@ -13,7 +13,7 @@ import model.PersonDirectory;
 
 /**
  *
- * @author dhyeyrabadia
+ * @author Vrajesh
  */
 public class CreatePersonJPanel extends javax.swing.JPanel {
     JPanel personProfileContainer;

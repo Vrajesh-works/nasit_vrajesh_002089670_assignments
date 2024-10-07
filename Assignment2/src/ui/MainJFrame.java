@@ -12,7 +12,7 @@ import ui.PersonManager.PersonMngWorkAreaJPanel;
 
 /**
  *
- * @author dhyeyrabadia
+ * @author Vrajesh
  */
 public class MainJFrame extends javax.swing.JFrame {
     

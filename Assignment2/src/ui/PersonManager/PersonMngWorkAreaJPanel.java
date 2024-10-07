@@ -10,7 +10,7 @@ import model.PersonDirectory;
 
 /**
  *
- * @author dhyeyrabadia
+ * @author Vrajesh
  */
 public class PersonMngWorkAreaJPanel extends javax.swing.JPanel {
     JPanel personProfileContainer;

@@ -1,3 +1,5 @@
+@import '../utils/mixins'; 
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -37,7 +39,7 @@
     }
   
     .login-button {
-      @include button-style(white, $secondary-hover-color);
+      @include button-style(#212121, #0097A7);
     }
   }
   

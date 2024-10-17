@@ -1,0 +1,7 @@
+@function px-to-rem($px) {
+  @return $px / 16 * 1rem;
+}
+
+@function rgba-darken($color, $alpha) {
+  @return rgba($color, $alpha);
+}

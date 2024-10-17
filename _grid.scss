@@ -1,0 +1,10 @@
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 5%;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}

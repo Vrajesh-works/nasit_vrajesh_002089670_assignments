@@ -1,0 +1,15 @@
+@import '../themes/colors';
+@import '../utils/mixins';
+
+.primary-button {
+  @include button-style($primary-color, $primary-hover-color);
+}
+
+.secondary-button {
+  @include button-style($secondary-color, $secondary-hover-color);
+}
+
+.button-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}

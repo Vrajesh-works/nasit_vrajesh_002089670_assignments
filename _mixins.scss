@@ -1,3 +1,5 @@
+@import 'colors';
+
 @mixin button-style($bg-color, $hover-color) {
   padding: 0.8rem 1.5rem;
   background-color: $bg-color;

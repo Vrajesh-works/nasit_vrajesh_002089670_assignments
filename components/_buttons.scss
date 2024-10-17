@@ -1,5 +1,4 @@
-@import 'colors';
-@import 'mixins';
+
 
 .primary-button {
   @include button-style($primary-color, $primary-hover-color);

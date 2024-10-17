@@ -2,25 +2,28 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 5%;
   background-color: $navbar-background-color;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  h1 {
-    font-size: 1.5rem;
+  .logo h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
     color: white;
+
+    span {
+      color: $secondary-color;
+    }
   }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
 
     a {
       color: white;
       text-decoration: none;
       font-size: 1rem;
-      transition: color 0.3s ease;
 
       &:hover {
         color: $secondary-color;
@@ -28,12 +31,7 @@
     }
   }
 
-  // Responsive
-  @media (max-width: 768px) {
-    flex-direction: column;
-    .nav-links {
-      flex-direction: column;
-      gap: 1rem;
-    }
+  .login-button {
+    @include button-style(white, $secondary-hover-color);
   }
 }

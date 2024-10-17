@@ -5,7 +5,7 @@
   padding: 1.5rem 5%;
   background-color: $navbar-background-color;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+  
   .logo h1 {
     font-size: 1.8rem;
     font-weight: bold;
@@ -19,14 +19,19 @@
   .nav-links {
     display: flex;
     gap: 1.5rem;
+    list-style: none;
 
-    a {
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
+    li {
+      display: inline;
 
-      &:hover {
-        color: $secondary-color;
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+
+        &:hover {
+          color: $secondary-color;
+        }
       }
     }
   }

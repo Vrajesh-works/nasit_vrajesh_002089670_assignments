@@ -15,6 +15,22 @@ import java.util.ArrayList;
  */
 public class FacultyProfile {
 
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
+    public ArrayList<FacultyAssignment> getFacultyassignments() {
+        return facultyassignments;
+    }
+
+    public void setFacultyassignments(ArrayList<FacultyAssignment> facultyassignments) {
+        this.facultyassignments = facultyassignments;
+    }
+
     Person person;
     ArrayList <FacultyAssignment> facultyassignments; //all classes taught by this professor
     
@@ -23,11 +39,6 @@ public class FacultyProfile {
         person = p;
         facultyassignments = new ArrayList();
     }
-
-    public Person getPerson() {
-        return person;
-    }
-    
     public  double getProfAverageOverallRating(){
         
         double sum = 0.0;

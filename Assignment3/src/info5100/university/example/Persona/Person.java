@@ -12,6 +12,14 @@ package info5100.university.example.Persona;
 public class Person {
     
     String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public Person (String id){
         
         this.id = id;
@@ -24,5 +32,9 @@ public class Person {
         if(getPersonId().equals(id)) return true;
         return false;
     }
-    
+    @Override
+public String toString() {
+    return "Person ID: " + id;
+}
+
 }

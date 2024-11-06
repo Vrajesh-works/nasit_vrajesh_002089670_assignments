@@ -18,4 +18,5 @@ public class College {
     public College(String name){
         departments = new ArrayList();
     }
+    
 }

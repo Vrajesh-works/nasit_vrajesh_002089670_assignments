@@ -16,25 +16,25 @@ import java.util.ArrayList;
 public class UserAccountDirectory {
 
     Department department;
-    ArrayList<UserAccount> studentlist;
+    ArrayList<UserAccount> uatlist;
 
     public UserAccountDirectory(Department d) {
 
         department = d;
-        studentlist = new ArrayList();
+        uatlist = new ArrayList();
 
     }
 
     public UserAccount newUserAccount(Person p) {
 
         UserAccount sp = new UserAccount(p);
-        studentlist.add(sp);
+        uatlist.add(sp);
         return sp;
     }
 
     public UserAccount findStudent(String id) {
 
-        for (UserAccount sp : studentlist) {
+        for (UserAccount sp : uatlist) {
 
          //   if (sp.isMatch(id)) {
          //       return sp;

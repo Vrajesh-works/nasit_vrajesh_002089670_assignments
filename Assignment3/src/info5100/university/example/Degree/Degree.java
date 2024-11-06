@@ -45,6 +45,7 @@ public class Degree {
         //Repeat this check for the electives as well
         ArrayList sas = sp.getCourseList(); //seatAssignments extracted from course loads
 
+       
         if (validateCoreClasses(sas) == false) {
             return false;
         }//core classes satisfied

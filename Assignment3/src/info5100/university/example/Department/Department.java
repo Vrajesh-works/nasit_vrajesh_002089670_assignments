@@ -40,16 +40,24 @@ public class Department {
         coursecatalog = new CourseCatalog(this);
         studentdirectory = new StudentDirectory(this); //pass the department object so it stays linked to it
         persondirectory = new PersonDirectory();
+        facultydirectory = new FacultyDirectory(this);
         degree = new Degree("MSIS");
-        
+
     }
-    public void addCoreCourse(Course c){
+
+    public void addCoreCourse(Course c) {
         degree.addCoreCourse(c);
-        
+
     }
-    public void addElectiveCourse(Course c){
+
+    public void addElectiveCourse(Course c) {
         degree.addElectiveCourse(c);
-        
+
+    }
+    public FacultyDirectory getFacultyDirectory() {
+
+        return facultydirectory;
+
     }
     public PersonDirectory getPersonDirectory() {
 
@@ -58,7 +66,7 @@ public class Department {
     }
 
     public StudentDirectory getStudentDirectory() {
-    return studentdirectory;
+        return studentdirectory;
     }
 
     public CourseSchedule newCourseSchedule(String semester) {
@@ -107,11 +115,5 @@ public class Department {
         co.assignEmptySeat(cl);
 
     }
+}
 
-    public FacultyDirectory getFacultyDirectory() {
-    if (facultydirectory == null) {
-        facultydirectory = new FacultyDirectory(this); // Pass 'this' if needed for dependency
-    }
-    return facultydirectory;
-}
-}

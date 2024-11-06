@@ -13,9 +13,10 @@ import java.util.ArrayList;
  * @author kal bugrara
  */
 public class CourseCatalog {
-    Department department;
+    Department department; //belongs to the department
     String lastupdated;
-    ArrayList<Course> courselist; 
+    ArrayList<Course> courselist;
+    
     public CourseCatalog(Department d){
         courselist = new ArrayList();
         department = d;

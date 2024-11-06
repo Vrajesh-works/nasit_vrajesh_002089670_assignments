@@ -15,10 +15,10 @@ import java.util.ArrayList;
  */
 public class CourseSchedule {
 
-    CourseCatalog coursecatalog;
+    CourseCatalog coursecatalog; 
 
     ArrayList<CourseOffer> schedule;
-    String semester;
+    String semester; 
 
     public CourseSchedule(String s, CourseCatalog cc) {
         semester = s;

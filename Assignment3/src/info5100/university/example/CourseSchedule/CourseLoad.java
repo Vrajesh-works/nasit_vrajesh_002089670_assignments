@@ -13,19 +13,22 @@ import java.util.ArrayList;
  */
 public class CourseLoad {
     String semester;
-    ArrayList<SeatAssignment> seatassignments;
+    ArrayList<SeatAssignment> seatassignments; //each represent 1 course registration
     
     public CourseLoad(String s){
         seatassignments = new ArrayList();
         semester = s;
     }
-    public SeatAssignment newSeatAssignment(CourseOffer co){
+    public SeatAssignment registerStudentInClass(CourseOffer co){
         
         Seat seat = co.getEmptySeat(); // seat linked to courseoffer
         if (seat==null) return null;
-        SeatAssignment sa = seat.newSeatAssignment(this);
+        SeatAssignment sa = seat.newSeatAssignment(this); 
         seatassignments.add(sa);  //add to students course 
+        
+        
         return sa;
+        
     }
     
     public void registerStudent(SeatAssignment sa){
@@ -42,27 +45,16 @@ public class CourseLoad {
         }
         return sum;
     }
-        public ArrayList<SeatAssignment> getSeatAssignments(){
-            return seatassignments;
-        }
-    public float getSemesterGPA() {
-        float totalScore = 0;
-        int totalCourses = 0;
-
-        // Loop through each seat assignment to calculate the total score
-        for (SeatAssignment sa : seatassignments) {
-            float score = sa.GetCourseStudentScore(); // Get the score for the student in the course
-            if (score >= 0) { // Ensure that the score is valid
-                totalScore += score;
-                totalCourses++;
-            }
-        }
-
-        // Return the GPA, which is the average score for the semester
-        if (totalCourses == 0) {
-            return 0; // Avoid division by zero if no courses
-        } else {
-            return totalScore / totalCourses;
-        }
+        
+    public ArrayList<SeatAssignment> getSeatAssignments(){
+        return seatassignments;
     }
+    
+    public ArrayList<CourseOffer> getCourseOffers() {
+    ArrayList<CourseOffer> courseOffers = new ArrayList<>();
+    for (SeatAssignment sa : seatassignments) {
+        courseOffers.add(sa.getSeat().getCourseOffer());
+    }
+    return courseOffers;
+    }         
 }

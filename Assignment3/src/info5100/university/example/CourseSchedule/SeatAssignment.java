@@ -46,11 +46,7 @@ public class SeatAssignment {
     public float GetCourseStudentScore(){
         return getCreditHours()*grade;
     }
-    public void setGrade(float g){
-        grade = g;
-    }
-    public float getGrade(){
-        return grade;
-    }
+    
+    
     
 }

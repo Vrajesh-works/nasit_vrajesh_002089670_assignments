@@ -12,7 +12,7 @@ import info5100.university.example.CourseSchedule.CourseOffer;
  * @author kal bugrara
  */
 public class FacultyAssignment {
-    double tracerating;
+    double tracerating; //the professor as ranked by the students
     CourseOffer courseoffer;
     FacultyProfile facultyprofile;
     public FacultyAssignment(FacultyProfile fp, CourseOffer co){

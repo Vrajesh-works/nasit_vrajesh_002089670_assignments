@@ -40,8 +40,10 @@ public class StudentDirectory {
             }
         }
             return null; //not found after going through the whole list
-         }
-    public ArrayList<StudentProfile> getStudentlist() {
-        return studentlist;
     }
+    
+    // New method to return the list of all students
+    public ArrayList<StudentProfile> getStudentList() {
+        return studentlist;
+    }  
 }

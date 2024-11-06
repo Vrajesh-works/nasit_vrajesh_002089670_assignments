@@ -89,5 +89,7 @@ public class CourseOffer {
     public int getCreditHours(){
         return course.getCredits();
     }
-
+     public Course getCourse() {
+        return course;
+    }
 }

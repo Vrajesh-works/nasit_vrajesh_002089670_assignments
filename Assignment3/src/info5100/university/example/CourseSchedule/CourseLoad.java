@@ -45,5 +45,24 @@ public class CourseLoad {
         public ArrayList<SeatAssignment> getSeatAssignments(){
             return seatassignments;
         }
-            
+    public float getSemesterGPA() {
+        float totalScore = 0;
+        int totalCourses = 0;
+
+        // Loop through each seat assignment to calculate the total score
+        for (SeatAssignment sa : seatassignments) {
+            float score = sa.GetCourseStudentScore(); // Get the score for the student in the course
+            if (score >= 0) { // Ensure that the score is valid
+                totalScore += score;
+                totalCourses++;
+            }
+        }
+
+        // Return the GPA, which is the average score for the semester
+        if (totalCourses == 0) {
+            return 0; // Avoid division by zero if no courses
+        } else {
+            return totalScore / totalCourses;
+        }
+    }
 }

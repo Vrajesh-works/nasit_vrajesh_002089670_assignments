@@ -47,7 +47,7 @@ public class Department {
         degree.addCoreCourse(c);
         
     }
-public void addElectiveCourse(Course c){
+    public void addElectiveCourse(Course c){
         degree.addElectiveCourse(c);
         
     }
@@ -107,4 +107,11 @@ public void addElectiveCourse(Course c){
         co.assignEmptySeat(cl);
 
     }
+
+    public FacultyDirectory getFacultyDirectory() {
+    if (facultydirectory == null) {
+        facultydirectory = new FacultyDirectory(this); // Pass 'this' if needed for dependency
+    }
+    return facultydirectory;
+}
 }

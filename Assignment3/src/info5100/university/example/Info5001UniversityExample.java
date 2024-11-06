@@ -42,9 +42,9 @@ public class Info5001UniversityExample {
 
     private static void createCourses(CourseCatalog courseCatalog) {
         String[][] courseInfo = {
-            {"INFO 6206", "Data Structures", "4", "false"},
-            {"INFO 6205", "Algorithms", "4", "false"},
-            {"INFO 5100", "Application Engineering", "4", "true"},
+            {"INFO 6206", "UX design", "4", "false"},
+            {"INFO 6205", "XR design", "4", "false"},
+            {"INFO 5100", "XR development with Unity", "4", "true"},
             {"INFO 5101", "Web Development", "3", "false"},
             {"INFO 6203", "Machine Learning", "4", "false"},
             {"INFO 5104", "Software Engineering", "4", "false"},

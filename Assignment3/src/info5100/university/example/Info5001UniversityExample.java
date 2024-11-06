@@ -44,7 +44,7 @@ public class Info5001UniversityExample {
         for (int i = 0; i < 10; i++) {
             String courseName = "Course " + i;
             String courseCode = "CODE" + (1000 + i); // Generates codes like CODE1001, CODE1002, etc.
-            Course course = coursecatalog.newCourse(courseName, courseCode, 4, i==0);
+            Course course = coursecatalog.newCourse(courseName, courseCode, 4);
             if (i==0)department.addCoreCourse(course);
             else department.addElectiveCourse(course);
         }

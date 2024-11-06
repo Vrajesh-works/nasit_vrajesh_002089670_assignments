@@ -112,17 +112,17 @@ private static void createCourseOffers(CourseSchedule courseSchedule) {
                                             CourseSchedule courseSchedule) {
         System.out.println("\nAssign Professors to students:");
         Map<String, String> courseFacultyMap = new LinkedHashMap<>();
-        courseFacultyMap.put("INFO 6206", "Dino");
-        courseFacultyMap.put("INFO 6205", "John");
-        courseFacultyMap.put("INFO 5100", "Kriti");
+        courseFacultyMap.put("INFO 6206", "james");
+        courseFacultyMap.put("INFO 6205", "kiran");
+        courseFacultyMap.put("INFO 5100", "Piyush");
         courseFacultyMap.put("INFO 5101", "Peter");
-        courseFacultyMap.put("INFO 6203", "Patrick");
-        courseFacultyMap.put("INFO 5104", "Greg");
+        courseFacultyMap.put("INFO 6203", "krish");
+        courseFacultyMap.put("INFO 5104", "jay");
         courseFacultyMap.put("INFO 5105", "Kevin");
         courseFacultyMap.put("INFO 5200", "Lebron");
-        courseFacultyMap.put("INFO 5300", "Michael");
-        courseFacultyMap.put("INFO 6105", "Steven");
-        courseFacultyMap.put("INFO 7100", "Jones");
+        courseFacultyMap.put("INFO 5300", "Mike");
+        courseFacultyMap.put("INFO 6105", "Steve");
+        courseFacultyMap.put("INFO 7100", "Joey");
 
 
 

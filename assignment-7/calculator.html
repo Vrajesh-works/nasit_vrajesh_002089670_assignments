@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #calculatorPage {
+            display: none;
+        }
+        .result-field {
+            background-color: #f8f9fa;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .welcome-text {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label>Email:</label>
+            <input type="email" id="email">
+            <div class="error" id="emailError"></div>
+        </div>
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" id="username">
+            <div class="error" id="usernameError"></div>
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="password">
+            <div class="error" id="passwordError"></div>
+        </div>
+        <div class="form-group">
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmPassword">
+            <div class="error" id="confirmPasswordError"></div>
+        </div>
+        <button id="loginBtn" disabled>Login</button>
+    </div>
+
+    <!-- Calculator Page -->
+    <div id="calculatorPage">
+        <h2 class="welcome-text">Welcome, <span id="loggedInUser"></span>!</h2>
+        <div class="form-group">
+            <label>Number 1:</label>
+            <input type="text" id="num1">
+            <div class="error" id="num1Error"></div>
+        </div>
+        <div class="form-group">
+            <label>Number 2:</label>
+            <input type="text" id="num2">
+            <div class="error" id="num2Error"></div>
+        </div>
+        <div>
+            <button id="addBtn">Add</button>
+            <button id="subtractBtn">Subtract</button>
+            <button id="multiplyBtn">Multiply</button>
+            <button id="divideBtn">Divide</button>
+        </div>
+        <div class="result-field">
+            Result: <span id="result">0</span>
+        </div>
+    </div>
+
+    <script>
+        $(() => {
+            // Login page validations
+            const validateEmail = (email) => {
+                if (!email) return "Email is required";
+                if (!/^[A-Za-z0-9._%+-]+@northeastern\.edu$/.test(email)) 
+                    return "Please enter a valid Northeastern email address";
+                return "";
+            };
+
+            const validateUsername = (username) => {
+                if (!username) return "Username is required";
+                if (username.length < 3) return "Username must be at least 3 characters";
+                if (username.length > 20) return "Username must be less than 20 characters";
+                if (/[^a-zA-Z0-9_]/.test(username)) 
+                    return "Username can only contain letters, numbers and underscore";
+                return "";
+            };
+
+            const validatePassword = (password) => {
+                if (!password) return "Password is required";
+                if (password.length < 8) return "Password must be at least 8 characters";
+                if (!/[A-Z]/.test(password)) return "Password must contain at least one uppercase letter";
+                if (!/[a-z]/.test(password)) return "Password must contain at least one lowercase letter";
+                if (!/[0-9]/.test(password)) return "Password must contain at least one number";
+                if (!/[!@#$%^&*]/.test(password)) 
+                    return "Password must contain at least one special character (!@#$%^&*)";
+                return "";
+            };
+
+            const validateConfirmPassword = (password, confirmPassword) => {
+                if (!confirmPassword) return "Please confirm your password";
+                if (password !== confirmPassword) return "Passwords do not match";
+                return "";
+            };
+
+            // Input validation handlers
+            $('#email, #username, #password, #confirmPassword').on('input', function() {
+                const email = $('#email').val();
+                const username = $('#username').val();
+                const password = $('#password').val();
+                const confirmPassword = $('#confirmPassword').val();
+
+                // Validate each field
+                const emailError = validateEmail(email);
+                const usernameError = validateUsername(username);
+                const passwordError = validatePassword(password);
+                const confirmPasswordError = validateConfirmPassword(password, confirmPassword);
+
+                // Display errors
+                $('#emailError').text(emailError).toggle(!!emailError);
+                $('#usernameError').text(usernameError).toggle(!!usernameError);
+                $('#passwordError').text(passwordError).toggle(!!passwordError);
+                $('#confirmPasswordError').text(confirmPasswordError).toggle(!!confirmPasswordError);
+
+                // Enable/disable login button
+                $('#loginBtn').prop('disabled', 
+                    !!(emailError || usernameError || passwordError || confirmPasswordError) ||
+                    !(email && username && password && confirmPassword)
+                );
+            });
+
+            // Login handler
+            $('#loginBtn').click(() => {
+                const username = $('#username').val();
+                $('#loggedInUser').text(username);
+                $('#loginPage').hide();
+                $('#calculatorPage').show();
+            });
+
+            // Calculator validations
+            const validateNumber = (value) => {
+                if (!value) return "Number is required";
+                if (!/^\-?\d*\.?\d+$/.test(value)) return "Please enter a valid number";
+                if (!isFinite(parseFloat(value))) return "Value is too large";
+                return "";
+            };
+
+            // Calculator input validation
+            $('#num1, #num2').on('input', function() {
+                const id = $(this).attr('id');
+                const error = validateNumber($(this).val());
+                $(`#${id}Error`).text(error).toggle(!!error);
+            });
+
+            // Single arrow function for all operations
+            const calculate = (operation) => {
+                const num1 = parseFloat($('#num1').val());
+                const num2 = parseFloat($('#num2').val());
+                
+                const num1Error = validateNumber($('#num1').val());
+                const num2Error = validateNumber($('#num2').val());
+                
+                if (num1Error || num2Error) return;
+
+                let result;
+                switch(operation) {
+                    case 'add': result = num1 + num2; break;
+                    case 'subtract': result = num1 - num2; break;
+                    case 'multiply': result = num1 * num2; break;
+                    case 'divide': 
+                        if (num2 === 0) {
+                            $('#num2Error').text("Cannot divide by zero").show();
+                            return;
+                        }
+                        result = num1 / num2;
+                        break;
+                }
+                $('#result').text(result.toFixed(2));
+            };
+
+            // Button click handlers
+            $('#addBtn').click(() => calculate('add'));
+            $('#subtractBtn').click(() => calculate('subtract'));
+            $('#multiplyBtn').click(() => calculate('multiply'));
+            $('#divideBtn').click(() => calculate('divide'));
+        });
+    </script>
+</body>
+</html>

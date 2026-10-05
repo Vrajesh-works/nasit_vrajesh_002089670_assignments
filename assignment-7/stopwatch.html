@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stopwatch App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .time-display {
+            font-size: 48px;
+            font-family: monospace;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        input[type="date"] {
+            padding: 8px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stopwatch</h1>
+    
+    <input type="date" id="currentDate" readonly>
+    
+    <div class="time-display" id="display">00:00:00</div>
+    
+    <div>
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn">Reset</button>
+    </div>
+
+    <script>
+        // Set current date
+        const dateInput = document.getElementById('currentDate');
+        const today = new Date();
+        dateInput.valueAsDate = today;
+        
+        // Stopwatch implementation using async/await and promises
+        class Stopwatch {
+            constructor(display) {
+                this.display = display;
+                this.running = false;
+                this.time = 0;
+                this.interval = null;
+            }
+
+            formatTime(ms) {
+                const hours = Math.floor(ms / 3600000);
+                const minutes = Math.floor((ms % 3600000) / 60000);
+                const seconds = Math.floor((ms % 60000) / 1000);
+                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            updateDisplay() {
+                this.display.textContent = this.formatTime(this.time);
+            }
+
+            async start() {
+                if (this.running) return;
+                this.running = true;
+                
+                // Using Promise and SetInterval
+                await new Promise(resolve => {
+                    this.interval = setInterval(() => {
+                        this.time += 1000;
+                        this.updateDisplay();
+                    }, 1000);
+                    resolve();
+                });
+            }
+
+            stop() {
+                this.running = false;
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+            }
+
+            reset() {
+                this.stop();
+                this.time = 0;
+                this.updateDisplay();
+            }
+        }
+
+        // Initialize stopwatch
+        const display = document.getElementById('display');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const resetBtn = document.getElementById('resetBtn');
+
+        const stopwatch = new Stopwatch(display);
+
+        // Button event handlers
+        startBtn.addEventListener('click', async () => {
+            await stopwatch.start();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        stopBtn.addEventListener('click', () => {
+            stopwatch.stop();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+
+        resetBtn.addEventListener('click', () => {
+            stopwatch.reset();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>

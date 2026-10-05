@@ -1,0 +1,11 @@
+
+
+.primary-button {
+  @include button-style($primary-color, $primary-hover-color);
+  font-size: 1rem;
+}
+
+.secondary-button {
+  @include button-style($secondary-color, $secondary-hover-color);
+  font-size: 0.9rem;
+}

@@ -1,0 +1,25 @@
+
+@mixin button-style($background-color, $hover-color) {
+  background-color: $background-color;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin responsive($device-width) {
+  @media (max-width: $device-width) {
+    @content;
+  }
+}
